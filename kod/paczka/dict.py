@@ -1,4 +1,4 @@
-dic = {
+_dic = {
        'ANTIGUA AND BARBUDA': 'ANTIGUA & BARBUDA',
        'BAHAMAS, THE': 'BAHAMAS',
        'BOSNIA AND HERZEGOVINA': 'BOSNIA & HERZEGOVINA',
@@ -56,4 +56,4 @@ dic = {
 
 
 def countries_dict():
-    return dic
+    return _dic

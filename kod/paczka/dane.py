@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from kod.biblioteka.dict import countries_dict
+from kod.paczka.dict import countries_dict
 
 
 def lata_scal(gdp, pop, co2, rangemin, rangemax):
@@ -8,12 +8,8 @@ def lata_scal(gdp, pop, co2, rangemin, rangemax):
     lata_pop = pop.columns[4:-1].astype("int64")
     lata_co2 = list(np.unique(co2.Year))
 
-    minimum = max(min(lata_gdp), min(lata_pop), min(lata_co2))
-    if rangemin:
-        minimum = max(minimum, int(rangemin))
-    maksimum = min(max(lata_gdp), max(lata_pop), max(lata_co2))
-    if rangemax:
-        maksimum = min(maksimum, int(rangemax))
+    minimum = max(min(lata_gdp), min(lata_pop), min(lata_co2), rangemin)
+    maksimum = min(max(lata_gdp), max(lata_pop), max(lata_co2), rangemax)
     lata = []
     for i in range(minimum, maksimum + 1):
         lata.append(str(i))
@@ -32,8 +28,7 @@ def kraje(dane1, dane2):
     return dane1, dane2
 
 
-def przerob(gdp, pop, co2, rangemin, rangemax):
-    lata = lata_scal(gdp, pop, co2, rangemin, rangemax)
+def przerob(gdp, pop, co2, lata):
     plik_gdp = pd.DataFrame(gdp[['Country Name'] + lata])
     plik_pop = pd.DataFrame(pop[['Country Name'] + lata])
     plik_co2 = pd.DataFrame(co2[co2.Year.astype(str).isin(lata)])
