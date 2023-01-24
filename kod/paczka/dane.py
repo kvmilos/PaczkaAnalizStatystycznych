@@ -1,31 +1,18 @@
 import numpy as np
 import pandas as pd
-from kod.paczka.dict import countries_dict
+from dict import countries_dict
 
 
 def lata_scal(gdp, pop, co2, rangemin, rangemax):
     lata_gdp = gdp.columns[4:-1].astype("int64")
     lata_pop = pop.columns[4:-1].astype("int64")
     lata_co2 = list(np.unique(co2.Year))
-
     minimum = max(min(lata_gdp), min(lata_pop), min(lata_co2), rangemin)
     maksimum = min(max(lata_gdp), max(lata_pop), max(lata_co2), rangemax)
     lata = []
     for i in range(minimum, maksimum + 1):
         lata.append(str(i))
     return lata
-
-
-def kraje(dane1, dane2):
-    dane1['Country'] = dane1['Country'].str.upper()
-    dic = countries_dict()
-    for _, row in dane1.iterrows():
-        if row['Country'] in dic:
-            dane1.at[row.name, 'Country'] = dic[row['Country']]
-    for _, row in dane2.iterrows():
-        if row['Country'] in dic:
-            dane2.at[row.name, 'Country'] = dic[row['Country']]
-    return dane1, dane2
 
 
 def przerob(gdp, pop, co2, lata):
@@ -43,6 +30,18 @@ def oczysc(gdp, pop, co2):
     for column in co2.columns[2:]:
         co2[column] = co2[column].fillna(value=co2[column].mean())
     return gdp, pop, co2
+
+
+def kraje(dane1, dane2):
+    dane1['Country'] = dane1['Country'].str.upper()
+    dic = countries_dict()
+    for _, row in dane1.iterrows():
+        if row['Country'] in dic:
+            dane1.at[row.name, 'Country'] = dic[row['Country']]
+    for _, row in dane2.iterrows():
+        if row['Country'] in dic:
+            dane2.at[row.name, 'Country'] = dic[row['Country']]
+    return dane1, dane2
 
 
 def scal(gdp, pop, co2):

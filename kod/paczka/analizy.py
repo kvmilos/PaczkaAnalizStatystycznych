@@ -17,4 +17,3 @@ def co2_change_per_capita(dane):
     pivot = pivot.sort_values(by='change', ascending=False)
     pivot2 = pivot.sort_values(by='change', ascending=True)
     return pivot.head(5), pivot2.head(5)
-
