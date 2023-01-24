@@ -1,13 +1,13 @@
-def max_co2_p_c(dane):
+def max_co2_per_capita(dane):
     return dane.groupby('Year').apply(lambda df: df.nlargest(5, 'Per Capita')[['Country', 'Per Capita', 'Total']])
 
 
-def max_gdp_p_c(dane):
+def max_gdp_per_capita(dane):
     dane['GDP per capita'] = dane['GDP'] / dane['Population']
     return dane.groupby('Year').apply(lambda df: df.nlargest(5, 'GDP per capita'))[['Country', 'GDP per capita', 'GDP']]
 
 
-def co2_change_p_c(dane):
+def co2_change_per_capita(dane):
     dane = dane.sort_values(by='Year')
     last_year = dane.Year.unique()[-1]
     year2 = last_year - 10
