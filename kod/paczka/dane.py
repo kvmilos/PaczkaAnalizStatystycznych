@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from kod.paczka.dict import countries_dict
+from dict import countries_dict
 
 
 def lata_scal(gdp, pop, co2, rangemin, rangemax):
