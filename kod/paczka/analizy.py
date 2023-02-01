@@ -1,13 +1,19 @@
 def max_co2_per_capita(dane):
+    assert 'Per Capita' in dane.columns, "DataFrame nie zawiera kolumny Per Capita"
     return dane.groupby('Year').apply(lambda df: df.nlargest(5, 'Per Capita')[['Country', 'Per Capita', 'Total']])
 
 
 def max_gdp_per_capita(dane):
+    assert 'GDP' in dane.columns, "DataFrame nie zawiera kolumny GDP"
+    assert 'Population' in dane.columns, "DataFrame nie zawiera kolumny Population"
     dane['GDP per capita'] = dane['GDP'] / dane['Population']
     return dane.groupby('Year').apply(lambda df: df.nlargest(5, 'GDP per capita'))[['Country', 'GDP per capita', 'GDP']]
 
 
-def co2_change_per_capita(dane):
+def co2_change_per_capita(dane, rangemin, rangemax):
+    assert 'Year' in dane.columns, "DataFrame nie zawiera kolumny Year"
+    if rangemax < rangemin + 10:
+        raise ValueError("Zakres wynosi mniej niż 10 lat")
     dane = dane.sort_values(by='Year')
     last_year = dane.Year.unique()[-1]
     year2 = last_year - 10
