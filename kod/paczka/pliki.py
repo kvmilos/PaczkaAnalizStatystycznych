@@ -20,6 +20,7 @@ def wczytaj_dane(args):
         assert isinstance(int(args.rangemax), int)
     except ValueError:
         raise KeyError("The last year in range must be a number!")
-    assert int(args.rangemin) <= int(args.rangemax), "The last year must be a value higher than the first year!"
+    if int(args.rangemin) > int(args.rangemax):
+        raise ValueError("The last year must be a value higher than the first year!")
     return pd.read_csv(args.GDP, skiprows=4), pd.read_csv(args.Population, skiprows=4), pd.read_csv(
         args.Emissions), int(args.rangemin), int(args.rangemax)
