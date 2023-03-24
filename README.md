@@ -29,16 +29,13 @@ profilowania, nie ma obowiązku przeprowadzania samych optymalizacji).
 &emsp;● Program powinien pozwalać zadawać w wierszu poleceń zakres lat (parametry -start rok i -koniec rok), wówczas badanych okres jest dodatkowo skracany do do podanego przedziału. Jeśli przedział po tej operacji okaże się pusty, należy zgłosić
 (i gdzieś w programie obsłużyć) wyjątek.  
 &emsp;● Program może mieć postać zwykłego programu lub Jupyterowego notatnika.  
-&emsp;● Program należy dostarczyć w postaci pakietu instalowalnego poleceniem pip (w
-postaci `pip install ./ścieżka/do_pakietu`).  
-&emsp;● Jeśli program wykryje jakieś niezgodności w danych (np. brak jakiegoś Państwa w
-niektórych danych), to powinien wypisać czytelny komunikat i działać dalej.  
+&emsp;● Program należy dostarczyć w postaci pakietu instalowalnego poleceniem pip (w postaci `pip install ./ścieżka/do_pakietu`).  
+&emsp;● Jeśli program wykryje jakieś niezgodności w danych (np. brak jakiegoś Państwa w niektórych danych), to powinien wypisać czytelny komunikat i działać dalej.  
 
 W programie oceniamy:  
 &emsp;● Podział na moduły, funkcje, wprowadzenie parametrów,  
 &emsp;● Jakość kodu (nazwy zmiennych i funkcji, komentarze).  
-&emsp;● Sugerujemy stosowanie narzędzi automatycznie sprawdzających (część)  
-zaleceń dotyczących czytelności kodu. Takie narzędzia mogą Państwo mieć wbudowane w Państwa IDE (np. W Pycharma) lub mogą Państwo skorzystać z zewnętrznych narzędzi (pylint, flake, ...),  
+&emsp;● Sugerujemy stosowanie narzędzi automatycznie sprawdzających (część) zaleceń dotyczących czytelności kodu. Takie narzędzia mogą Państwo mieć wbudowane w Państwa IDE (np. W Pycharma) lub mogą Państwo skorzystać z zewnętrznych narzędzi (pylint, flake, ...),  
 &emsp;● Warto również przeczytać zalecenia z Przewodnika po stylu kodu w Pythonie PEP-8.  
 &emsp;● Pokrycie kodu testami.  
 &emsp;● Użycie bibliotek przedstawianych podczas zajęć.  
